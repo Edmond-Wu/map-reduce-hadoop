@@ -7,15 +7,17 @@ import java.io.IOException;
 /**
  * Authors: Edmond Wu, Vincent Xie
  */
-public class Reduce extends Reducer<Text, IntWritable, Text, IntWritable> {
+public class Reduce extends Reducer<Text, IntWritable, Text, Text> {
 
-    private int winsWhite = 0, winsBlack = 0, draws = 0;
+    private int count = 0;
 
     public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
         int result = 0;
         for (IntWritable val : values) {
             result += val.get();
+            count += val.get();
         }
-        context.write(key, new IntWritable(result));
+        Text ratio = new Text(result + " " + ((1.0 * result)/count));
+        context.write(key, ratio);
     }
 }

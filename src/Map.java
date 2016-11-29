@@ -13,15 +13,17 @@ public class Map extends Mapper<Object, Text, Text, IntWritable> {
         StringTokenizer tokenizer = new StringTokenizer(value.toString(), "\n");
         while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
-            char number = token.charAt(token.length() - 3);
-            if (number == '1') {
-                context.write(new Text("Black"), new IntWritable(1));
-            }
-            else if (number == '2') {
-                context.write(new Text("Draw"), new IntWritable(1));
-            }
-            else {
-                context.write(new Text("White"), new IntWritable(1));
+            if (token.length() > 3) {
+                char number = token.charAt(token.length() - 3);
+                if (number == '1') {
+                    context.write(new Text("Black"), new IntWritable(1));
+                }
+                else if (number == '2') {
+                    context.write(new Text("Draw"), new IntWritable(1));
+                }
+                else {
+                    context.write(new Text("White"), new IntWritable(1));
+                }
             }
         }
     }

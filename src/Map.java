@@ -14,7 +14,6 @@ public class Map extends Mapper<Object, Text, Text, IntWritable> {
         while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
             char number = token.charAt(token.length() - 3);
-            System.out.println(number);
             if (number == '1') {
                 context.write(new Text("Black"), new IntWritable(1));
             }

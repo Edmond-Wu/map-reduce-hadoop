@@ -11,6 +11,9 @@ import java.util.StringTokenizer;
 public class Map extends Mapper<Object, Text, Text, IntWritable> {
     public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
         StringTokenizer tokenizer = new StringTokenizer(value.toString(), "\n");
+        context.write(new Text("Black"), new IntWritable(0));
+        context.write(new Text("White"), new IntWritable(0));
+        context.write(new Text("Draw"), new IntWritable(0));
         while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
             if (token.length() > 3) {

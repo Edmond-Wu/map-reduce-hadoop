@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="map-reduce-hadoop">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/map_reduce_hadoop_jar/map-reduce-hadoop.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

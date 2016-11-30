@@ -13,6 +13,11 @@ public class Reduce extends Reducer<Text, IntWritable, Text, IntWritable> {
         for (IntWritable val : values) {
             result += val.get();
         }
-        context.write(key, new IntWritable(result));
+        if (key.toString().toLowerCase().contains("total")) {
+            Driver.total = result;
+        }
+        else {
+            context.write(key, new IntWritable(result));
+        }
     }
 }

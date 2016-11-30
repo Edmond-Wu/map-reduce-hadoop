@@ -24,6 +24,7 @@ public class Map extends Mapper<Object, Text, Text, IntWritable> {
                 else {
                     context.write(new Text("White"), new IntWritable(1));
                 }
+                context.write(new Text("Total"), new IntWritable(1));
             }
         }
     }

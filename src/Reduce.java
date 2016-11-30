@@ -13,7 +13,7 @@ public class Reduce extends Reducer<Text, IntWritable, Text, IntWritable> {
         for (IntWritable val : values) {
             result += val.get();
         }
-        if (key.toString().toLowerCase().contains("total")) {
+        if (key.toString().contains("AA")) {
             Driver.total = result;
         }
         else {
